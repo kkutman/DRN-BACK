@@ -1,6 +1,6 @@
 package kg.drn.drnback.entity.enums;
 
-public enum Region {
+public enum RegionType {
     ISSYK_KOL,
     BATKEN,
     NARIN,

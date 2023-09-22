@@ -1,15 +1,15 @@
 package kg.drn.drnback.services.impl;
 
-import kg.drn.drnback.dto.request.DefaultRequest;
-import kg.drn.drnback.dto.request.EmployeeRequest;
-import kg.drn.drnback.dto.request.HistoryRequest;
-import kg.drn.drnback.dto.request.StructureRequest;
+import kg.drn.drnback.dto.request.*;
 import kg.drn.drnback.dto.response.*;
+import kg.drn.drnback.entity.Text;
+import kg.drn.drnback.entity.enums.SubCategoryType;
 import kg.drn.drnback.repository.TextRepository;
-import kg.drn.drnback.services.AboutUsService;
+import kg.drn.drnback.services.AboutTheDepartmentService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,12 +17,16 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class AboutUsServiceImpl implements AboutUsService {
+public class AboutTheDepartmentServiceImpl implements AboutTheDepartmentService {
     final TextRepository textRepository;
 
     @Override
     public SimpleResponse saveHistory(HistoryRequest request) {
-        return null;
+        textRepository.save(Text.builder()
+                .subject(request.subject())
+                .text(request.text())
+                .subCategoryType(SubCategoryType.valueOf(request.subCategoryType())).build());
+        return SimpleResponse.builder().message("History successfully saved!").status(HttpStatus.OK).build();
     }
 
     @Override
@@ -81,22 +85,62 @@ public class AboutUsServiceImpl implements AboutUsService {
     }
 
     @Override
-    public SimpleResponse saveFunctionsAndTasks(DefaultRequest request) {
+    public SimpleResponse saveSymbolism(StructureRequest request) {
         return null;
     }
 
     @Override
-    public SimpleResponse updateFunctionsAndTasks(DefaultRequest request) {
+    public SimpleResponse updateSymbolism(StructureRequest request) {
         return null;
     }
 
     @Override
-    public SimpleResponse deleteFunctionsAndTasks() {
+    public SimpleResponse deleteSymbolism() {
         return null;
     }
 
     @Override
-    public FunctionsAndTasksResponse functionsAndTasks() {
+    public SymbolismResponse symbolism() {
+        return null;
+    }
+
+    @Override
+    public SimpleResponse saveContact(StructureRequest request) {
+        return null;
+    }
+
+    @Override
+    public SimpleResponse updateContact(StructureRequest request) {
+        return null;
+    }
+
+    @Override
+    public SimpleResponse deleteContact() {
+        return null;
+    }
+
+    @Override
+    public ContactsResponse contact() {
+        return null;
+    }
+
+    @Override
+    public SimpleResponse saveAddress(AddressRequest request) {
+        return null;
+    }
+
+    @Override
+    public SimpleResponse updateAddress(AddressRequest request) {
+        return null;
+    }
+
+    @Override
+    public SimpleResponse deleteAddress(AddressRequest request) {
+        return null;
+    }
+
+    @Override
+    public RegionResponse region(Long id) {
         return null;
     }
 
@@ -117,26 +161,6 @@ public class AboutUsServiceImpl implements AboutUsService {
 
     @Override
     public List<InformationClassResponse> getAllNPA() {
-        return null;
-    }
-
-    @Override
-    public SimpleResponse saveSymbolism(StructureRequest request) {
-        return null;
-    }
-
-    @Override
-    public SimpleResponse updateSymbolism(StructureRequest request) {
-        return null;
-    }
-
-    @Override
-    public SimpleResponse deleteSymbolism() {
-        return null;
-    }
-
-    @Override
-    public SymbolismResponse symbolism() {
         return null;
     }
 }
