@@ -1,7 +1,7 @@
 package kg.drn.drnback.entity;
 
 import jakarta.persistence.*;
-import kg.drn.drnback.entity.enums.Region;
+import kg.drn.drnback.entity.enums.RegionType;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -31,5 +31,5 @@ public class Employee {
     String phoneNumber;
     String address;
     @Enumerated(EnumType.STRING)
-    Region region;
+    RegionType region;
 }
