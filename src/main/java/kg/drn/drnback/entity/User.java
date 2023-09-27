@@ -29,6 +29,7 @@ public class User implements UserDetails {
     String name;
     String email;
     String password;
+    @Enumerated(EnumType.STRING)
     Role role;
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

@@ -1,6 +1,7 @@
 package kg.drn.drnback.entity;
 
 import jakarta.persistence.*;
+import kg.drn.drnback.entity.enums.SubCategoryType;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -25,4 +26,5 @@ public class Contacts {
     String pressService;
     String callCentre;
     String twoGISLink;
+    SubCategoryType subCategoryType;
 }

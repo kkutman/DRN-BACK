@@ -7,6 +7,7 @@ import java.util.List;
 
 @Builder
 public record InformationClassResponse(
+        Long id,
         String subject,
         List<InformationSubClassResponse>informationSubClassResponses,
         LocalDate createAt
