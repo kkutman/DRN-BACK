@@ -1,6 +1,7 @@
 package kg.drn.drnback.entity;
 
 import jakarta.persistence.*;
+import kg.drn.drnback.entity.enums.EmployeeType;
 import kg.drn.drnback.entity.enums.RegionType;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -32,4 +33,6 @@ public class Employee {
     String address;
     @Enumerated(EnumType.STRING)
     RegionType region;
+    @Enumerated(EnumType.STRING)
+    EmployeeType employeeType;
 }

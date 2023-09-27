@@ -3,7 +3,7 @@ package kg.drn.drnback.entity.enums;
 public enum RegionType {
     ISSYK_KOL,
     BATKEN,
-    NARIN,
+    NARYN,
     CHUY,
     OSH,
     JALAL_ABAD,
