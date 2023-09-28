@@ -2,6 +2,7 @@ package kg.drn.drnback.services;
 
 import kg.drn.drnback.dto.request.*;
 import kg.drn.drnback.dto.response.*;
+import kg.drn.drnback.entity.Region;
 
 import java.util.List;
 
@@ -59,6 +60,7 @@ public interface AboutTheDepartmentService {
     SimpleResponse deleteAddress(Long id);
 
     RegionResponse region(Long id);
+    List<Region>getAllRegion();
 
     // -положение
     SimpleResponse saveNPA(InformationClassRequest request);

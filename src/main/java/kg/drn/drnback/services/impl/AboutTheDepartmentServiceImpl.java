@@ -68,6 +68,11 @@ public class AboutTheDepartmentServiceImpl implements AboutTheDepartmentService 
     }
 
     @Override
+    public List<Region> getAllRegion() {
+        return regionRepository.findAll();
+    }
+
+    @Override
     public SimpleResponse updateHistory(HistoryRequest request) {
         Text text = getText(SubCategoryType.HISTORY, "История не сохранена");
         text.setText(validation.textValid(request.text()));
@@ -362,8 +367,8 @@ public class AboutTheDepartmentServiceImpl implements AboutTheDepartmentService 
     public SimpleResponse updateNPA(InformationClassRequest request, Long id) {
         InformationClass informationClass = informationClassRepository.findById(id).orElseThrow(
                 () -> new NotFoundException(String.format("Положение c id %s не найден!", id)));
-        System.out.println(request.toString());
-//        informationClass.setInformationSubClasses(new InformationSubClassMapper().dtoToEntity(request.informationSubClassRequests(), informationClass));
+        if(request.informationSubClassRequests().size()!=0) informationRepositoryCustom.deleteInformationSubClassByIfoId(id);
+        informationClass.setInformationSubClasses(new InformationSubClassMapper().dtoToEntity(request.informationSubClassRequests(), informationClass));
         if (request.subject()!=null)informationClass.setSubject(request.subject());
         informationClassRepository.save(informationClass);
         log.info("Положение успешно обнавлено!");
@@ -380,6 +385,6 @@ public class AboutTheDepartmentServiceImpl implements AboutTheDepartmentService 
 
     @Override
     public List<InformationClassResponse> getAllNPA() {
-        return informationRepositoryCustom.getAllInformationClass();
+        return informationRepositoryCustom.getAllInformationClass(InformationClassType.POSITION);
     }
 }

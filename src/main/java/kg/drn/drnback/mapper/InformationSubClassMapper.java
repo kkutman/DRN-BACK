@@ -1,6 +1,5 @@
 package kg.drn.drnback.mapper;
 
-import kg.drn.drnback.dto.request.InformationClassRequest;
 import kg.drn.drnback.dto.request.InformationSubClassRequest;
 import kg.drn.drnback.entity.InformationClass;
 import kg.drn.drnback.entity.InformationSubClass;
