@@ -8,13 +8,13 @@ import java.util.List;
 
 public interface AboutTheDepartmentService {
     //-история
-    SimpleResponse saveHistory(HistoryRequest request);
+    SimpleResponse saveHistory(DefaultRequest request);
 
-    SimpleResponse updateHistory(HistoryRequest request);
+    SimpleResponse updateHistory(DefaultRequest request);
 
     SimpleResponse deleteHistory();
 
-    HistoryResponse history();
+    DefaultResponse history();
 
     // -руководство
     SimpleResponse saveEmployee(EmployeeRequest request);

@@ -4,5 +4,6 @@ public enum SubCategoryType {
     HISTORY,
     STRUCTURE,
     SYMBOLISM,
-    CONTACT
+    CONTACT,
+    ACTIVITIES
 }

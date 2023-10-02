@@ -2,8 +2,8 @@ package kg.drn.drnback.api.aboutTheDepartment;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import kg.drn.drnback.dto.request.HistoryRequest;
-import kg.drn.drnback.dto.response.HistoryResponse;
+import kg.drn.drnback.dto.request.DefaultRequest;
+import kg.drn.drnback.dto.response.DefaultResponse;
 import kg.drn.drnback.dto.response.SimpleResponse;
 import kg.drn.drnback.services.AboutTheDepartmentService;
 import lombok.AccessLevel;
@@ -22,13 +22,13 @@ public class HistoryApi {
 
     @Operation(summary = "Сохранение историй", description = "Этот метод для сохранение историй!")
     @PostMapping("/save_history")
-    public SimpleResponse saveHistory(@RequestBody HistoryRequest request) {
+    public SimpleResponse saveHistory(@RequestBody DefaultRequest request) {
         return service.saveHistory(request);
     }
 
     @Operation(summary = "Редактирование историй", description = "Этот метод для редактирование историй!")
     @PostMapping("/update_history")
-    public SimpleResponse updateHistory(@RequestBody HistoryRequest request) {
+    public SimpleResponse updateHistory(@RequestBody DefaultRequest request) {
         return service.updateHistory(request);
     }
 
@@ -40,7 +40,7 @@ public class HistoryApi {
 
     @Operation(summary = "История", description = "Этот метод для историй!")
     @GetMapping("/get_history")
-    public HistoryResponse history() {
+    public DefaultResponse history() {
         return service.history();
     }
 }

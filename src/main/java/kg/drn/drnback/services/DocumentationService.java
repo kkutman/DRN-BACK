@@ -28,4 +28,12 @@ public interface DocumentationService {
     SimpleResponse saveRegulationsPublicServices(String pdf);
     SimpleResponse deleteRegulationsPublicServices();
     String getPdf(PdfType type);
+
+    SimpleResponse saveReportsAndStatistics(InformationClassRequest request);
+
+    SimpleResponse updateReportsAndStatistics(InformationClassRequest request, Long id);
+
+    SimpleResponse deleteReportsAndStatistics(Long id);
+
+    List<InformationClassResponse> getAllReportsAndStatistics();
 }

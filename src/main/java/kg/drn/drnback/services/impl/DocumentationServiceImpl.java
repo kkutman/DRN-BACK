@@ -123,7 +123,7 @@ public class DocumentationServiceImpl implements DocumentationService {
                     .pdfType(PdfType.GOVERNMENT_SERVICE_STANDARDS)
                     .build());
             log.info("PDF успешно сохранен!");
-            return SimpleResponse.builder().message("PDF успешно сохранен!").build();
+            return SimpleResponse.builder().message("PDF успешно сохранен!").status(HttpStatus.OK).build();
         } else {
             return SimpleResponse.builder().message("Проверьте является ли ваш файл pdf форматом!").status(HttpStatus.BAD_REQUEST).build();
         }
@@ -147,7 +147,7 @@ public class DocumentationServiceImpl implements DocumentationService {
                     .pdfType(PdfType.REGULATION_PUBLIC_SERVICE)
                     .build());
             log.info("PDF успешно сохранен!");
-            return SimpleResponse.builder().message("PDF успешно сохранен!").build();
+            return SimpleResponse.builder().message("PDF успешно сохранен!").status(HttpStatus.OK).build();
         } else {
             return SimpleResponse.builder().message("Проверьте является ли ваш файл pdf форматом!").status(HttpStatus.BAD_REQUEST).build();
         }
@@ -158,7 +158,7 @@ public class DocumentationServiceImpl implements DocumentationService {
         pdfRepository.delete(pdfRepository.findByPdfType(PdfType.REGULATION_PUBLIC_SERVICE)
                 .orElseThrow(() -> new NotFoundException("PDF Регламентов гос услуг не сохранен!")));
         log.info("PDF успешно удален!");
-        return SimpleResponse.builder().message("PDF успешно удален!").build();
+        return SimpleResponse.builder().message("PDF успешно удален!").status(HttpStatus.OK).build();
     }
 
     @Override
@@ -166,5 +166,33 @@ public class DocumentationServiceImpl implements DocumentationService {
         Pdf pdf = pdfRepository.findByPdfType(type)
                 .orElseThrow(() -> new NotFoundException("PDF Регламентов гос услуг не сохранен!"));
         return pdf.getPdf();
+    }
+
+    @Override
+    public SimpleResponse saveReportsAndStatistics(InformationClassRequest request) {
+        InformationClass informationClass = saveMapper(request, InformationClassType.REPORTS_AND_STATISTICS);
+        informationClassRepository.save(informationClass);
+        log.info("Отчеты и Статистика успешно сохранен!");
+        return SimpleResponse.builder().message("Отчеты и Статистика успешно сохранен!").status(HttpStatus.OK).build();
+    }
+
+    @Override
+    public SimpleResponse updateReportsAndStatistics(InformationClassRequest request, Long id) {
+        InformationClass informationClass = updateMapper(request, id, "Отчеты и Статистика");
+        informationClassRepository.save(informationClass);
+        log.info("Отчеты и Статистика успешно обнавлен!");
+        return SimpleResponse.builder().message("Отчеты и Статистика успешно обнавлен!").status(HttpStatus.OK).build();
+    }
+
+    @Override
+    public SimpleResponse deleteReportsAndStatistics(Long id) {
+        informationClassRepository.delete(informationClassRepository.findById(id).orElseThrow(
+                () -> new NotFoundException(String.format("Отчеты и Статистика c id %s не найден", id))));
+        return SimpleResponse.builder().message("Отчеты и Статистика успешно удален!").status(HttpStatus.OK).build();
+    }
+
+    @Override
+    public List<InformationClassResponse> getAllReportsAndStatistics() {
+        return informationRepositoryCustom.getAllInformationClass(InformationClassType.REPORTS_AND_STATISTICS);
     }
 }

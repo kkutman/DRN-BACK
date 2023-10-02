@@ -53,7 +53,7 @@ public class AboutTheDepartmentServiceImpl implements AboutTheDepartmentService 
     }
 
     @Override
-    public SimpleResponse saveHistory(HistoryRequest request) {
+    public SimpleResponse saveHistory(DefaultRequest request) {
         if (textRepository.existsBySubCategoryType(SubCategoryType.HISTORY)) {
             return SimpleResponse.builder().status(HttpStatus.BAD_REQUEST).message("История уже есть!").build();
         }
@@ -73,7 +73,7 @@ public class AboutTheDepartmentServiceImpl implements AboutTheDepartmentService 
     }
 
     @Override
-    public SimpleResponse updateHistory(HistoryRequest request) {
+    public SimpleResponse updateHistory(DefaultRequest request) {
         Text text = getText(SubCategoryType.HISTORY, "История не сохранена");
         text.setText(validation.textValid(request.text()));
         text.setSubject(validation.subjectValid(request.subject()));
@@ -92,10 +92,10 @@ public class AboutTheDepartmentServiceImpl implements AboutTheDepartmentService 
     }
 
     @Override
-    public HistoryResponse history() {
+    public DefaultResponse history() {
         Text text = getText(SubCategoryType.HISTORY, "История не сохранена");
         log.info("История взята!");
-        return HistoryResponse.builder().history(text.getText()).subject(text.getSubject()).build();
+        return DefaultResponse.builder().text(text.getText()).subject(text.getSubject()).build();
     }
 
 

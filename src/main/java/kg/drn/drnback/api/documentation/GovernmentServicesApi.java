@@ -48,12 +48,12 @@ public class GovernmentServicesApi {
     @Operation(summary = "Регламент госуслуг", description = "PDF регламента госуслуг!")
     @GetMapping("/regulations_public_service")
     public String regulationsPublicServices() {
-        return service.getPdf(PdfType.GOVERNMENT_SERVICE_STANDARDS);
+        return service.getPdf(PdfType.REGULATION_PUBLIC_SERVICE);
     }
 
     @Operation(summary = "Стандарты госуслуг", description = "PDF стандарта госуслуг!")
     @GetMapping("/government_service")
     public String governmentServicesStandards() {
-        return service.getPdf(PdfType.REGULATION_PUBLIC_SERVICE);
+        return service.getPdf(PdfType.GOVERNMENT_SERVICE_STANDARDS);
     }
 }
